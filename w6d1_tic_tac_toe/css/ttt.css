@@ -47,11 +47,6 @@ li:hover {
   text-align: center;
 }
 
-.x:hover,
-.o:hover {
-  background: white;
-}
-
 .x:after,
 .o:after {
   display: block;
