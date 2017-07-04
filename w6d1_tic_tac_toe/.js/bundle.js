@@ -167,14 +167,43 @@ module.exports = Game;
 /***/ (function(module, exports) {
 
 class View {
-  constructor(game, $el) {}
+  constructor(game, $el) {
+    this.game = game;
+    this.$el = $el;
 
-  bindEvents() {}
+    this.setupBoard();
+  }//constructor
 
-  makeMove($square) {}
 
-  setupBoard() {}
-}
+  bindEvents() {
+    const $inputEl = $("#li");
+    $inputEl.click(() => {
+      this.game.playmove($inputEl);
+    });
+
+
+  }//bindEvents
+
+  makeMove($square) {
+
+  }//makeMove
+
+  setupBoard() {
+    const $ul = $("#ul");
+    $ul.addClass("group");
+
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
+      for (let colIdx = 0; colIdx < 3; colIdx++) {
+        let $li = $("#li");
+        $li.data("pos", [rowIdx, colIdx]);
+
+        $ul.append($li);
+      }//inner for
+    }//for
+
+    this.$el.append($ul);
+  }//setupBoard
+}//view
 
 module.exports = View;
 
@@ -317,7 +346,10 @@ const View = __webpack_require__ (2); // require appropriate file
 const Game = __webpack_require__ (1);// require appropriate file
 
 $( () => {
-  // Your code here
+  let rootEl = $('.ttt');
+  const game = new Game ();
+  new View (game, rootEl);
+  console.log("test");
 });
 
 

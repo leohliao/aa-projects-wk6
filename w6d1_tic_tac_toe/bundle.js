@@ -167,14 +167,72 @@ module.exports = Game;
 /***/ (function(module, exports) {
 
 class View {
-  constructor(game, $el) {}
+  constructor(game, $el) {
+    this.game = game;
+    this.$el = $el;
 
-  bindEvents() {}
+    this.setupBoard();
+    this.bindEvents();
+  }//constructor
 
-  makeMove($square) {}
 
-  setupBoard() {}
-}
+  bindEvents() {
+    this.$el.on("click", "li", (event =>{
+      const $square = $(event.currentTarget);
+      this.makeMove($square);
+    }));
+  }//bindEvents
+
+  makeMove($square) {
+    const pos = $square.data("pos");
+    const currentPlayer = this.game.currentPlayer;
+
+    try {
+      this.game.playMove(pos);
+    } catch (e) {
+      alert("Invalid move! Try again.");
+      return;
+    }
+
+    $square.addClass(currentPlayer);
+
+   if (this.game.isOver()) {
+     // cleanup click handlers.
+     this.$el.off("click");
+     this.$el.addClass("game-over");
+
+     const winner = this.game.winner();
+     const $figcaption = $("<figcaption>");
+
+     if (winner) {
+       this.$el.addClass(`winner-${winner}`);
+       $figcaption.html(`You win, ${winner}!`);
+     } else {
+       $figcaption.html("It's a draw!");
+     }
+
+     this.$el.append($figcaption);
+   }
+
+
+  }//makeMove
+
+  setupBoard() {
+    const $ul = $("<ul>");
+    $ul.addClass("group");
+
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
+      for (let colIdx = 0; colIdx < 3; colIdx++) {
+        let $li = $("<li>");
+        $li.data("pos", [rowIdx, colIdx]);
+
+        $ul.append($li);
+      }//inner for
+    }//for
+
+    this.$el.append($ul);
+  }//setupBoard
+}//view
 
 module.exports = View;
 
@@ -317,7 +375,9 @@ const View = __webpack_require__ (2); // require appropriate file
 const Game = __webpack_require__ (1);// require appropriate file
 
 $( () => {
-  // Your code here
+  let rootEl = $('.ttt');
+  const game = new Game ();
+  new View (game, rootEl);
 });
 
 
