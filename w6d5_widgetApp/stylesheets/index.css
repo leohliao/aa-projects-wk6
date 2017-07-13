@@ -1,0 +1,98 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: sans-serif;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  list-style: none;
+}
+
+body{
+  display: flex;
+  justify-content: space-around;
+  /*background-color: lightgray;*/
+}
+
+h1 {
+  font-family: 'Monoton', cursive;
+}
+
+input {
+  border: 1px solid black;
+}
+
+.clock{
+  background-image: url(https://eyeforaneyepiece.files.wordpress.com/2013/09/the-place-promised-in-our-early-days-background-2.jpg);
+  background-size: cover;
+  background-position-y: 70%;
+  background-repeat: no-repeat;
+  background-blend-mode: lighten;
+  background-color: transparent;
+
+  border: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  height: 150px;
+  width: 500px;
+  font-weight: bold;
+  font-size: 36px;
+  color: black;
+}
+
+.clock p {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather {
+  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/7c/20/bf/7c20bf6ceca022ebfea44d66cf079b94.gif);
+  background-size: cover;
+  background-position-y: 15%;
+  background-repeat: no-repeat;
+
+  border: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  height: 150px;
+  width: 500px;
+  font-weight: bold;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+}
+
+.weather p {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.loading {
+padding-top: 50px;
+font-size: 42px;
+color: red;
+vertical-align: center;
+}
+
+.autoComplete{
+  border: 2px solid black;
+  padding: 10px 0px 10px 20px;
+  width: 150px;
+}
+
+.interactive {
+  display: flex;
+  justify-content: space-around;
+}
