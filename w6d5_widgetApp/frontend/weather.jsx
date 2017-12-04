@@ -16,7 +16,7 @@ class Weather extends React.Component {
     let longitude = position.coords.longitude;
 
     let url = 'http://api.openweathermap.org/data/2.5/weather?';
-    let apiId = '&APPID=ed7a67add81b3012a5c287c6bd028891';
+    let apiId = '&APPID=';
     url += `lat=${latitude}`;
     url += `&lon=${longitude}`;
     url += apiId;
